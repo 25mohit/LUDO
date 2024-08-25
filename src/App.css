@@ -197,6 +197,9 @@
   display: flex;
   align-items: center;
 }
+.area .row.r2.center .box {
+  border-color: white;
+}
 .area.a1 .row.r2.center > div {
   background-color: var(--p4-color) !important;
 }
@@ -211,9 +214,11 @@
 }
 .area.a1 .row.r2.center div:nth-last-child(1), .area.a4 .row.r2.center div:nth-last-child(1){
   background-color: transparent !important;
+  border-color: var(--box-border-color);
 }
 .area.a2 .row.r2.center div:nth-child(1), .area.a3 .row.r2.center div:nth-child(1){
   background-color: transparent !important;
+  border-color: var(--box-border-color);
 }
 @media screen and (max-width: 750px) {
   

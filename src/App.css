@@ -1,38 +1,149 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100vw;
+  height: 100vh;
 }
-
-.App-link {
-  color: #61dafb;
+.board{
+  width: var(--board-width);
+  min-width: var(--board-min-width);
+  background-color: white;
+  aspect-ratio: 1;
+  padding: var(--padding);
+  position: relative;
+  box-shadow: 0 0 25px 1px rgba(20,20,20,0.3);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.player-ground{
+  aspect-ratio: 1;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.player-ground.p1{
+  left: var(--padding);
+  border: 2px solid var(--p1-color);
+  background-color: var(--p1-color);
+}
+.player-ground.p2{
+  right: var(--padding);
+  border: 2px solid var(--p2-color);
+  background-color: var(--p2-color);
+}
+.player-ground.p3{
+  bottom: var(--padding);
+  right: var(--padding);
+  border: 2px solid var(--p3-color);
+  background-color: var(--p3-color);
+}
+.player-ground.p4{
+  bottom: var(--padding);
+  left: var(--padding);
+  border: 2px solid var(--p4-color);
+  background-color: var(--p4-color);
+}
+.player-ground .p-avatar{
+  background-color: white;
+  width: 65%;
+  max-width: 65%;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  rotate: 45deg;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Create 2 columns */
+  grid-template-rows: repeat(2, 1fr);    /* Create 2 rows */
+  gap: 10%;
+  aspect-ratio: 1;
+}
+.player-ground .p-avatar .dots{
+  width: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
+}
+.player-ground.p1 .p-avatar .dots{
+  background-color: var(--p1-color);
+}
+.player-ground.p2 .p-avatar .dots{
+  background-color: var(--p2-color);
+}
+.player-ground.p3 .p-avatar .dots{
+  background-color: var(--p3-color);
+}
+.player-ground.p4 .p-avatar .dots{
+  background-color: var(--p4-color);
+}
+.winning-area{
+  position: absolute;
+  background-color: rgba(255, 214, 138, 0.466);
+  aspect-ratio: 1;
+  margin: calc(50% - var(--padding));
+  transform: translate(-50%,  -50%);
+}
+.area{
+  position: absolute;
+  /* width: 10rem; */
+  z-index: 1000;
+  /* height: 50%; */
+  display: flex;
+}
+.area.a1{
+  /* background: rgba(128, 128, 128, 0.564); */
+  bottom: var(--padding);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.area.a2{
+  /* background: yellow; */
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column !important;
+}
+.area.a3{
+  /* background: blueviolet; */
+  left: 50%;
+  transform: translateX(-50%);
+}
+.area.a4{
+  /* background: yellowgreen; */
+  top: 50%;
+  flex-direction: column !important;
+  right: var(--padding);
+  transform: translateY(-50%);
+}
+.box{
+  border: 1px solid var(--box-border-color);
+  width: 73.4%;
+  aspect-ratio: 1;
+  border-radius: 5px;
+}
+.area.a1 .row, .area.a3 .row{
+  flex-direction: column;
+}
+.area .row{
+  background-color: white;
+  flex: 1;
+  border: 1px solid rgba(133, 133, 133, 0.362);
+  display: flex;
+  align-items: center;
+}
+.area.a1 .row.r2.center > div {
+  background-color: var(--p4-color) !important;
+}
+.area.a2 .row.r2.center > div {
+  background-color: var(--p1-color) !important;
+}
+.area.a3 .row.r2.center > div {
+  background-color: var(--p2-color) !important;
+}
+.area.a4 .row.r2.center > div {
+  background-color: var(--p3-color) !important;
+}
+.area.a1 .row.r2.center div:nth-last-child(1), .area.a4 .row.r2.center div:nth-last-child(1){
+  background-color: transparent !important;
+}
+.area.a2 .row.r2.center div:nth-child(1), .area.a3 .row.r2.center div:nth-child(1){
+  background-color: transparent !important;
 }

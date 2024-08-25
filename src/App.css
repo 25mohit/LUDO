@@ -84,9 +84,7 @@
 }
 .area{
   position: absolute;
-  /* width: 10rem; */
   z-index: 1000;
-  /* height: 50%; */
   display: flex;
 }
 .area.a1{

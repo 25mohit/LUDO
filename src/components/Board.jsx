@@ -15,36 +15,36 @@ const Board = () => {
   return (
     <div className='board' id="board">
         <div className="player-ground p1" style={{width: `${boardSize / ratio}px`}}>
-            <container className="p-avatar">
+            <section className="p-avatar">
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
-            </container>
+            </section>
         </div>
         <div className="player-ground p2" style={{width: `${boardSize / ratio}px`}}>
-            <container className="p-avatar">
+            <section className="p-avatar">
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
-            </container>
+            </section>
         </div>
         <div className="player-ground p3" style={{width: `${boardSize / ratio}px`}}>
-            <container className="p-avatar">
+            <section className="p-avatar">
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
-            </container>
+            </section>
         </div>
         <div className="player-ground p4" style={{width: `${boardSize / ratio}px`}}>
-            <container className="p-avatar">
+            <section className="p-avatar">
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
                 <div className="dots"></div>
-            </container>
+            </section>
         </div>
         <div className="winning-area" style={{width: `${winningArea}px`}}></div>
         <div className="area a1" style={{height: `calc(50% - ${winningArea/2}px)`, width: `calc(${(boardSize/3.8)}px)`}}>

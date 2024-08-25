@@ -7,7 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
@@ -21,5 +20,5 @@ code {
   --p2-color: green;
   --p3-color: blue;
   --p4-color: yellow;
-  --box-border-color: rgba(87, 87, 87, 0.473);
+  --box-border-color: rgba(140, 140, 140, 0.355);
 }

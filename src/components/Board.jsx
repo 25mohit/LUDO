@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { boxes } from '../JSON/Box'
+import { FaStar } from "react-icons/fa6";
 
 const Board = () => {
     const [boardSize, setBoardSize] = useState()
@@ -13,12 +14,16 @@ const Board = () => {
         setBoardSize(uiBoard.width)        
     },[])
 
-    const renderBoxes = (start, end,  shouldReverse = false) => {
+    const renderBoxes = (start, end,  shouldReverse = false, player = '') => {
         const slicedBoxes = boxes.slice(start, end);
         const displayBoxes = shouldReverse ? slicedBoxes.reverse() : slicedBoxes;
 
         return displayBoxes?.map?.((box, index) => (
-            <div key={index} className={`box ${box.t}`}>{box.n.slice(1,3)}</div>
+            <div key={index} className={`box ${box.t} ${box.s === 'start' ? `${player} start` : ''}`}>
+                {
+                    (box.t === "s" && box.s !== 'start') ? <FaStar /> : box?.n?.slice(1,3)
+                }
+            </div>
         ));
     };
     
@@ -30,12 +35,8 @@ const Board = () => {
 
         return displayBoxes?.map?.((box, index) => (
             <div key={index} className={`box ${box.t}`}>{box.n.slice(1,4)}</div>
-        ))
-
-        
+        ))        
     }
-    
-    console.log("boxes", renderCenterRow(51, 'p1'));
     
   return (
     <div className='board' id="board">
@@ -81,7 +82,7 @@ const Board = () => {
         <div className="winning-area" style={{width: `${winningArea}px`}}></div>
         <div className="area a1" style={{height: `calc(50% - ${winningArea/2}px)`, width: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
-                {renderBoxes(0, 6, true)}
+                {renderBoxes(0, 6, true, 'a1')}
             </div>
             <div className="row r2 center">
                 {renderCenterRow(51,'p1', true)}
@@ -92,7 +93,7 @@ const Board = () => {
         </div>
         <div className="area a2" style={{width: `calc(50% - ${winningArea/2}px)`, height: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
-                {renderBoxes(13, 19)}
+                {renderBoxes(13, 19, false, 'a2')}
             </div>
             <div className="row r2 center">
                 
@@ -110,7 +111,7 @@ const Board = () => {
                 {renderCenterRow(25,'p3')}
             </div>
             <div className="row r3">
-                {renderBoxes(26, 32)}
+                {renderBoxes(26, 32, false, 'a3')}
             </div>
         </div>
         <div className="area a4" style={{width: `calc(50% - ${winningArea/2}px)`, height: `calc(${(boardSize/3.8)}px)`}}>
@@ -121,7 +122,7 @@ const Board = () => {
                 {renderCenterRow(38,'p4', true)}
             </div>
             <div className="row r3">
-                {renderBoxes(39, 45, true)}
+                {renderBoxes(39, 45, true, 'a4')}
             </div>
         </div>
     </div>

@@ -191,6 +191,18 @@
   align-items: center;
   justify-content: center;
 }
+.box.a1.start{
+  background-color: var(--p4-color);
+}
+.box.a2.start{
+  background-color: var(--p1-color);
+}
+.box.a3.start{
+  background-color: var(--p2-color);
+}
+.box.a4.start{
+  background-color: var(--p3-color);
+}
 .area.a1 .row, .area.a3 .row{
   flex-direction: column;
 }

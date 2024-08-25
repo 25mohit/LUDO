@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { boxes } from '../JSON/Box'
 
 const Board = () => {
     const [boardSize, setBoardSize] = useState()
@@ -11,6 +12,30 @@ const Board = () => {
         setWinningArea(uiBoard.width - ((uiBoard.width / ratio) *2) )
         setBoardSize(uiBoard.width)        
     },[])
+
+    const renderBoxes = (start, end,  shouldReverse = false) => {
+        const slicedBoxes = boxes.slice(start, end);
+        const displayBoxes = shouldReverse ? slicedBoxes.reverse() : slicedBoxes;
+
+        return displayBoxes?.map?.((box, index) => (
+            <div key={index} className={`box ${box.t}`}>{box.n.slice(1,3)}</div>
+        ));
+    };
+    
+    const renderCenterRow = (start, player,shouldReverse = false) => {
+        const list = boxes.slice(start, start+1);
+        const mappedList = Array.from({ length: 5 }).map((_, index) => ({n: `${player}-${index+1}`, t: player}))        
+        const combined = [...list, ...mappedList ]
+        const displayBoxes = shouldReverse ? combined.reverse() : combined;
+
+        return displayBoxes?.map?.((box, index) => (
+            <div key={index} className={`box ${box.t}`}>{box.n.slice(1,4)}</div>
+        ))
+
+        
+    }
+    
+    console.log("boxes", renderCenterRow(51, 'p1'));
     
   return (
     <div className='board' id="board">
@@ -56,104 +81,47 @@ const Board = () => {
         <div className="winning-area" style={{width: `${winningArea}px`}}></div>
         <div className="area a1" style={{height: `calc(50% - ${winningArea/2}px)`, width: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(0, 6, true)}
             </div>
             <div className="row r2 center">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div></div>
+                {renderCenterRow(51,'p1', true)}
+            </div>
             <div className="row r3">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div></div>
+                {renderBoxes(45, 51)}
+            </div>
         </div>
         <div className="area a2" style={{width: `calc(50% - ${winningArea/2}px)`, height: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(13, 19)}
             </div>
             <div className="row r2 center">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                
+                {renderCenterRow(12,'p2')}
             </div>
             <div className="row r3">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(6, 12, true)}
             </div>
         </div>
         <div className="area a3" style={{height: `calc(50% - ${winningArea/2}px)`, width: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(19, 25, true)}
             </div>
             <div className="row r2 center">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderCenterRow(25,'p3')}
             </div>
             <div className="row r3">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(26, 32)}
             </div>
         </div>
         <div className="area a4" style={{width: `calc(50% - ${winningArea/2}px)`, height: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(32, 38)}
             </div>
             <div className="row r2 center">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderCenterRow(38,'p4', true)}
             </div>
             <div className="row r3">
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
-                <div className="box"></div>
+                {renderBoxes(39, 45, true)}
             </div>
         </div>
     </div>

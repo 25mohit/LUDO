@@ -75,6 +75,76 @@
 .player-ground.p4 .p-avatar .dots{
   background-color: var(--p4-color);
 }
+.player-ground .user-profile{
+  width: var(--profile-width);
+  height: 4rem;
+  position: absolute;
+  box-shadow: var(--profile-box-shaodw);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: gray;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border: 3px solid var(--profile-connector-color);
+}
+.player-ground .user-profile > img{
+  width: 1.4rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.player-ground .user-profile::after{
+  position: absolute;
+  box-shadow: var(--profile-box-shaodw);
+  content: '';
+  width: 3.9rem;
+  height: 2px;
+  background-color: var(--profile-connector-color);
+}
+.player-ground.p1 .user-profile{
+  /* background-color: orange; */
+  top: 0;
+  left: calc(-1 * var(--profile-distance));
+  border-radius: 10px 0 10px 10px;
+}
+.player-ground.p2 .user-profile{
+  /* background-color: brown; */
+  top: 0;
+  right: calc(-1 * var(--profile-distance));
+  border-radius: 0 10px 10px 10px;
+}
+.player-ground.p3 .user-profile{
+  /* background-color: palevioletred; */
+  bottom: 0;
+  right: calc(-1 * var(--profile-distance));
+  border-radius: 10px 10px 10px 0;
+}
+.player-ground.p4 .user-profile{
+  /* background-color: paleturquoise; */
+  bottom: 0;
+  left: calc(-1 * var(--profile-distance));
+  border-radius: 10px 10px 0 10px;
+}
+.player-ground.p1 .user-profile::after{
+  right: -4.05rem;
+  top: -2.3px;
+}
+.player-ground.p2 .user-profile::after{
+  left: -4.05rem;
+  top: -2.3px;
+}
+.player-ground.p3 .user-profile::after{
+  left: -4.05rem;
+  bottom: -2.3px;
+}
+.player-ground.p4 .user-profile::after{
+  right: -4.05rem;
+  bottom: -2.3px;
+}
 .winning-area{
   position: absolute;
   background-color: rgba(255, 214, 138, 0.466);
@@ -144,4 +214,48 @@
 }
 .area.a2 .row.r2.center div:nth-child(1), .area.a3 .row.r2.center div:nth-child(1){
   background-color: transparent !important;
+}
+@media screen and (max-width: 750px) {
+  
+  .player-ground.p1 .user-profile{
+    top: -7rem;
+    left: 0;
+    border-radius: 10px 10px 10px 0;
+  }
+  .player-ground.p2 .user-profile{
+    top: -7rem;
+    right: 0;
+    border-radius: 10px 10px 0px 10px;
+  }
+  .player-ground.p3 .user-profile{
+    bottom: -7rem;
+    right: 0;
+    border-radius: 10px 0 10px 10px;
+  }
+  .player-ground.p4 .user-profile{
+    bottom: -7rem;
+    left: 0;
+    border-radius: 0 10px 10px 10px;
+  }
+  .player-ground .user-profile::after{
+    /* background-color: orange; */
+    height: 2.9rem;
+    width: 2px;
+  }
+  .player-ground.p1 .user-profile::after{
+    left: -2px;
+    top: 103.7168% !important;
+  }
+  .player-ground.p2 .user-profile::after{
+    left: 100%;
+    top: 103.7168% !important;
+  }
+  .player-ground.p3 .user-profile::after{
+    left: 100%;
+    top: -82.7168% !important;
+  }
+  .player-ground.p4 .user-profile::after{
+    left: -2px;
+    top: -82.7168% !important;
+  }
 }

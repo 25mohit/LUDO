@@ -21,5 +21,9 @@ code {
   --p2-color: green;
   --p3-color: blue;
   --p4-color: yellow;
+  --profile-distance: 10rem;
+  --profile-width: 6rem;
+  --profile-connector-color: rgba(128, 128, 128, 0.53);
+  --profile-box-shaodw: 0 0 10px 2px rgba(20,20,20,0.3);
   --box-border-color: rgba(87, 87, 87, 0.473);
 }

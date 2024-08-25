@@ -147,10 +147,16 @@
 }
 .winning-area{
   position: absolute;
-  background-color: rgba(255, 214, 138, 0.466);
+  background-color: rgba(215, 215, 215, 0.304);
   aspect-ratio: 1;
   margin: calc(50% - var(--padding));
   transform: translate(-50%,  -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: greenyellow;
+  user-select: none;
 }
 .area{
   position: absolute;
@@ -209,7 +215,7 @@
 .area .row{
   background-color: white;
   flex: 1;
-  border: 1px solid rgba(133, 133, 133, 0.362);
+  /* border: 1px solid rgba(133, 133, 133, 0.362); */
   display: flex;
   align-items: center;
 }

@@ -21,7 +21,7 @@ const Board = () => {
         return displayBoxes?.map?.((box, index) => (
             <div key={index} className={`box ${box.t} ${box.s === 'start' ? `${player} start` : ''}`}>
                 {
-                    (box.t === "s" && box.s !== 'start') ? <FaStar /> : box?.n?.slice(1,3)
+                    (box.t === "s" && box.s !== 'start') ? <FaStar /> : ''
                 }
             </div>
         ));
@@ -34,7 +34,7 @@ const Board = () => {
         const displayBoxes = shouldReverse ? combined.reverse() : combined;
 
         return displayBoxes?.map?.((box, index) => (
-            <div key={index} className={`box ${box.t}`}>{box.n.slice(1,4)}</div>
+            <div key={index} className={`box ${box.t}`}></div>
         ))        
     }
     
@@ -79,7 +79,7 @@ const Board = () => {
                 <div className="dots"></div>
             </section>
         </div>
-        <div className="winning-area" style={{width: `${winningArea}px`}}></div>
+        <div className="winning-area" style={{width: `${winningArea}px`}}>W</div>
         <div className="area a1" style={{height: `calc(50% - ${winningArea/2}px)`, width: `calc(${(boardSize/3.8)}px)`}}>
             <div className="row r1">
                 {renderBoxes(0, 6, true, 'a1')}

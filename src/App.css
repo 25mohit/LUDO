@@ -193,9 +193,41 @@
   aspect-ratio: 1;
   border-radius: 5px;
   overflow: hidden;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.box.star{
+  /* background-color: orange; */
+  position: relative;
+}
+.box .ico{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* background-color: blue; */
+  color: gray;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.p-icon{
+  /* color: black; */
+  /* box-shadow: 0 0 5px 2px red; */
+  transition: 1s;
+  font-size: 1.3rem;
+}
+.p-icon.p1{
+  color: var(--p4-color);
+}
+.p-icon.p2{
+  color: var(--p1-color);
+}
+.p-icon.p3{
+  color: var(--p2-color);
+}
+.p-icon.p4{
+  color: var(--p3-color);
 }
 .box.a1.start{
   background-color: var(--p4-color);

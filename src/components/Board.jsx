@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react'
 import { boxes } from '../JSON/Box'
 import { FaStar } from "react-icons/fa6";
+import { FaChessPawn } from "react-icons/fa";
 
 const Board = () => {
     const [boardSize, setBoardSize] = useState()
     const [winningArea, setWinningArea] = useState()
+    const [playerPosition, setPlayerPosition] = useState([
+        {p1: {g1: 'b1', g2: 'b20', g3: 'b25', g4: 'b4'}},
+        {p2: {g1: 'b5', g2: 'b6', g3: 'b7', g4: 'b8'}},
+        {p3: {g1: 'b30', g2: 'b10', g3: 'b11', g4: 'b12'}},
+        {p4: {g1: 'b40', g2: 'b14', g3: 'b15', g4: 'b16'}},
+    ])
 
     const ratio = 2.7;
 
@@ -18,14 +25,43 @@ const Board = () => {
         const slicedBoxes = boxes.slice(start, end);
         const displayBoxes = shouldReverse ? slicedBoxes.reverse() : slicedBoxes;
 
+        // console.log("displayBoxes", playerPosition?.p1);
+        // dt?.p1[posti[ind+1]] === box.n ? 'goti' : ''
+        let playe = ['p1', 'p2', 'p3', 'p4']
+        let dx = ['g1', 'g2', 'g3', 'g4']
+        
         return displayBoxes?.map?.((box, index) => (
-            <div key={index} className={`box ${box.t} ${box.s === 'start' ? `${player} start` : ''}`}>
-                {
-                    (box.t === "s" && box.s !== 'start') ? <FaStar /> : ''
-                }
+            <div key={index} className={`box ${box.t} ${box.s === 'start' ? `${player} start` : ''} ${(box.t === "s" && box.s !== 'start') ? 'star' :''}`}>
+                {/* Render a star if needed */}
+                {box.t === "s" && box.s !== 'start' ? <FaStar className='ico'/> : ''}
+
+                {/* Check for each player if their position matches the current box */}
+                {playerPosition.map((playerData, playerIndex) => {
+                    const playerKey = `p${playerIndex + 1}`;
+                    const playerPositions = playerData[playerKey];
+
+                    return Object.keys(playerPositions).map((gotiKey) => {
+                        if (playerPositions[gotiKey] === box.n) {
+                            console.log(box.n, gotiKey, playerKey)
+                            
+                            return (
+                                <span className={`p-icon ${playerKey}`} key={`${playerKey}-${gotiKey}`} style={{zIndex: '20'}}>
+                                    {/* {playerKey}-{gotiKey} */}
+                                    <FaChessPawn />
+                                </span>
+                            );
+                        }
+                        return null;
+                    });
+                })}
             </div>
         ));
     };
+
+
+    // console.log("playerPosition", playerPosition);
+    // console.log("playerPosition", Object.keys(playerPosition?.[0]?.p1));
+    
     
     const renderCenterRow = (start, player,shouldReverse = false) => {
         const list = boxes.slice(start, start+1);
